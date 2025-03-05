@@ -21,5 +21,6 @@
       "common-app": ["common-app"]
     }
   },
+  "strict": true,
   "include": ["./src/**/*"]
 }

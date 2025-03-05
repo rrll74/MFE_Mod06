@@ -29,7 +29,7 @@ Tendrás que:
 
 ## Ejercicio 2
 
-- Montamos un json-server local (borramos la colección de hotels previa).
+- Montamos un json-server local (borramos la colección de hoteles previa).
 
 [json-server](https://github.com/typicode/json-server)
 
