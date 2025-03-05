@@ -1,2 +1,2 @@
-export * from './edit';
+export * from './api';
 export * from './show';

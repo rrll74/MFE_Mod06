@@ -2,15 +2,11 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import * as api from '../api';
 import { ShowCharacterComponent } from './show-character.component';
-import {
-  CharacterEntityApi,
-  createEmptyEntityCharacter,
-} from 'pods/character-collection/api';
 
 export const ShowCharacterContainer: React.FunctionComponent = () => {
   const { id } = useParams<{ id: string }>();
-  const [character, setCharacter] = React.useState<CharacterEntityApi>(
-    createEmptyEntityCharacter()
+  const [character, setCharacter] = React.useState<api.CharacterEntityApi>(
+    api.createEmptyEntityCharacter()
   );
 
   React.useEffect(() => {
@@ -28,5 +24,5 @@ export const ShowCharacterContainer: React.FunctionComponent = () => {
     window.history.back();
   };
 
-  return <ShowCharacterComponent character={character} onBack={handleBack} />;
+  return <ShowCharacterComponent entity={character} onBack={handleBack} />;
 };

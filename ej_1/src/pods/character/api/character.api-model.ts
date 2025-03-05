@@ -1,4 +1,4 @@
-export interface Character {
+export interface CharacterEntityApi {
   id: number;
   name: string;
   status: string;
@@ -18,3 +18,24 @@ export interface Character {
   url: string;
   created: string;
 }
+
+export const createEmptyEntityCharacter = (): CharacterEntityApi => ({
+  id: 0,
+  name: '',
+  status: '',
+  species: '',
+  type: '',
+  gender: '',
+  origin: {
+    name: '',
+    url: '',
+  },
+  location: {
+    name: '',
+    url: '',
+  },
+  image: '',
+  episode: [],
+  url: '',
+  created: '',
+});

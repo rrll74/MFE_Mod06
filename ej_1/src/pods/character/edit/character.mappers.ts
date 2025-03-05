@@ -1,8 +1,8 @@
-import * as apiModel from './api/character.api-model';
+import * as apiModel from '../api/character.api-model';
 import * as viewModel from './character.vm';
 
 export const mapCharacterFromApiToVm = (
-  character: apiModel.Character
+  character: apiModel.CharacterEntityApi
 ): viewModel.Character => ({
   ...character,
   id: character.id,
@@ -15,7 +15,7 @@ export const mapCharacterFromApiToVm = (
 
 export const mapCharacterFromVmToApi = (
   character: viewModel.Character
-): apiModel.Character =>
+): apiModel.CharacterEntityApi =>
   ({
     ...character,
     id: character.id,
@@ -24,4 +24,4 @@ export const mapCharacterFromVmToApi = (
     species: character.species,
     type: character.type,
     gender: character.gender,
-  } as unknown as apiModel.Character);
+  } as unknown as apiModel.CharacterEntityApi);

@@ -8,7 +8,7 @@ import {
 } from 'common/components';
 import { Lookup } from 'common/models';
 import { formValidation } from './edit-character.validations';
-import { Character } from '../character.vm';
+import { Character } from './character.vm';
 import * as classes from './edit-character.styles';
 
 interface Props {

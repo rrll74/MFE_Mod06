@@ -1,13 +1,13 @@
 import React from 'react';
-import { CharacterEntityApi } from '../api';
+import { LocationEntityApi } from '../api';
 import { ShowEntityComponent } from 'pods/show-entity';
 
 interface Props {
-  entity: CharacterEntityApi;
+  entity: LocationEntityApi;
   onBack: () => void;
 }
 
-export const ShowCharacterComponent: React.FunctionComponent<Props> = (
+export const ShowLocationComponent: React.FunctionComponent<Props> = (
   props
 ) => {
   const { entity, onBack } = props;

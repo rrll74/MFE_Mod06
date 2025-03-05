@@ -11,8 +11,8 @@ export const useCharacterCollection = () => {
   >([]);
   const [pageInfo, setPageInfo] = React.useState<FootPagination>();
 
-  const loadCharacterCollection = (page: number) => {
-    getCharacterCollection(page).then((result) => {
+  const loadCharacterCollection = (page: number, searchTerm: string) => {
+    getCharacterCollection(page, searchTerm).then((result) => {
       setCharacterCollection(mapToCollection(result.results, mapFromApiToVm));
       setPageInfo(result.info);
     });

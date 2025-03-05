@@ -10,10 +10,14 @@ export const CharacterCollectionContainer = () => {
     useCharacterCollection();
   const navigate = useNavigate();
   const [page, setPage] = React.useState(1);
+  const [searchTerm, setSearchTerm] = React.useState('');
 
   React.useEffect(() => {
-    loadCharacterCollection(1);
-  }, []);
+    loadCharacterCollection(1, searchTerm);
+    return () => {
+      loadCharacterCollection(1, searchTerm);
+    };
+  }, [searchTerm]);
 
   const handleCreateCharacter = () => {
     navigate(linkRoutes.createCharacter);
@@ -25,15 +29,20 @@ export const CharacterCollectionContainer = () => {
 
   const handleDelete = async (id: number) => {
     await deleteCharacter(id);
-    loadCharacterCollection(page);
+    loadCharacterCollection(page, searchTerm);
   };
 
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    loadCharacterCollection(value);
+    loadCharacterCollection(value, searchTerm);
     setPage(value);
+  };
+
+  const handleSearch = (event) => {
+    console.log(event.target.value);
+    setSearchTerm(event.target.value);
   };
 
   return (
@@ -45,6 +54,7 @@ export const CharacterCollectionContainer = () => {
       onEdit={handleEdit}
       onDelete={handleDelete}
       onPageChange={handlePageChange}
+      onSearchChange={handleSearch}
     />
   );
 };
