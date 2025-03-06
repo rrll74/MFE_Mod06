@@ -1,15 +1,33 @@
 import express from 'express';
-import path from 'node:path';
+import * as path from 'path';
+import jsonServer from 'json-server';
 import { characterApi } from './api';
 
-const PORT = 3000;
-const app = express();
-app.use(express.json());
+const PORT = 3001;
+(async () => {
+  const app = express();
 
-app.use('/', express.static(path.resolve(import.meta.dirname, '../public')));
+  const data = jsonServer.router(
+    path.resolve(
+      new URL('.', import.meta.url).pathname,
+      './db/mock-data/rickandmorty-data.json'
+    )
+  );
+  const middlewares = jsonServer.defaults();
 
-app.use('/api/characters', characterApi);
+  app.use(express.json());
 
-app.listen(PORT, () => {
-  console.log(`Server running http://localhost:${PORT}`);
-});
+  app.use(
+    '/',
+    express.static(
+      path.resolve(new URL('.', import.meta.url).pathname, './public')
+    )
+  );
+
+  app.use('/api', middlewares, data);
+  app.use('/api/characters', characterApi);
+
+  app.listen(PORT, () => {
+    console.log(`Express Server running http://localhost:${PORT}`);
+  });
+})();
