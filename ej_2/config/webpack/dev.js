@@ -2,45 +2,41 @@ const { merge } = require('webpack-merge');
 const Dotenv = require('dotenv-webpack');
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 const base = require('./base');
-const helpers = require('./helpers');
+const { webpack } = require('webpack');
 
 module.exports = merge(base, {
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'eval-source-map',
   output: {
-    path: helpers.resolveFromRootPath('dist'),
     filename: '[name].js',
   },
   devServer: {
+    host: 'localhost',
+    port: 8080,
     hot: true,
     proxy: {
-      '/api': 'http://localhost:3000',
+      '/api': 'http://localhost:3001',
+      // '/graphql': 'http://localhost:3000',
     },
   },
   module: {
     rules: [
       {
-        test: /\.[jt]sx?$/,
+        test: /\.tsx?$/,
         exclude: /node_modules/,
-        use: [
-          {
-            loader: require.resolve('babel-loader'),
-            options: {
-              plugins: [require.resolve('react-refresh/babel')],
-            },
+        use: {
+          loader: 'babel-loader',
+          options: {
+            plugins: [require.resolve('react-refresh/babel')],
           },
-        ],
-      },
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        },
       },
     ],
   },
   plugins: [
-    new ReactRefreshWebpackPlugin(),
     new Dotenv({
       path: 'dev.env',
     }),
+    new ReactRefreshWebpackPlugin(),
   ],
 });

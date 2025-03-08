@@ -1,3 +1,5 @@
-export * from './db';
-export * from './mock-data/default-character.api';
+export * from './character.crud.model';
+export * from './location.crud.model';
+export * from './episode.crud.model';
+export * from './mock-data/default-data.api';
 export * from './models';

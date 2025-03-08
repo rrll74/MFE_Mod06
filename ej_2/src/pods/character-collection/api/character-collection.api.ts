@@ -19,6 +19,7 @@ export const getCharacterCollection = async (
     const { data: results } = await Axios.get(
       `${url}/?_limit=${process.env.PAGE_LIMIT}&_page=${page}`
     );
+    alert('llega');
     console.log(results, info);
     return { info: info, results: results };
   } catch (error) {

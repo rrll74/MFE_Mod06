@@ -1,4 +1,4 @@
-export interface Character {
+export interface CharacterEntityApi {
   id: number;
   name: string;
   status: string;
@@ -19,7 +19,7 @@ export interface Character {
   created: string;
 }
 
-export interface CharacterEdit {
+export interface CharacterEntityApiEdit {
   id: number;
   name: string;
   status: string;

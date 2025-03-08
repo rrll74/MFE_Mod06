@@ -4,7 +4,7 @@
   "description": "Rick & Morty API",
   "main": "index.js",
   "scripts": {
-    "start": "run-p -l mock-server type-check:watch start:dev",
+    "start": "run-p -l type-check:watch start:dev mock-server_v1_0_0_3b",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
     "build": "run-p -l type-check build:prod",
     "build:prod": "npm run clean && babel src -d dist --extensions \".ts\"",
@@ -13,14 +13,14 @@
     "clean": "rimraf dist",
     "start_proof": "run-p -l mock-server start_init",
     "start_init": "node ./index.ts",
-    "mock-server_v1_0_0_3b": "json-server ./src/db/mock-data/rickandmorty-data.json",
+    "mock-server_v1_0_0_3b": "json-server --watch ./src/db/mock-data/rickandmorty-data.json",
     "mock-server": "json-server --watch ./src/db/mock-data/rickandmorty-data.json --routes ./src/json-server/routes.json  --middlewares ./src/json-server/character.middleware.js --no-delete-cascade"
   },
   "author": "Lemoncode",
   "license": "MIT",
   "dependencies": {
     "express": "^4.21.2",
-    "json-server": "^0.16.1",
+    "json-server": "^1.0.0-beta.3",
     "regenerator-runtime": "^0.14.1"
   },
   "devDependencies": {
@@ -33,10 +33,11 @@
     "@types/express": "^5.0.0",
     "@types/json-server": "^0.14.7",
     "@types/node": "^22.13.9",
+    "dotenv-webpack": "^8.1.0",
     "nodemon": "^2.0.12",
     "npm-run-all": "^4.1.5",
     "rimraf": "^3.0.2",
-    "typescript": "^4.3.5"
-  },
-  "type": "module"
+    "typescript": "^4.3.5",
+    "webpack-merge": "^6.0.1"
+  }
 }

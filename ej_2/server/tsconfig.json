@@ -13,6 +13,5 @@
     "esModuleInterop": true,
     "baseUrl": "./src"
   },
-  "include": ["src/**/*"],
-  "exclude": ["src/json-server/character.middleware.js"]
+  "include": ["src/**/*"]
 }
