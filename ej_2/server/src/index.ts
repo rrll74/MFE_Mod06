@@ -3,7 +3,7 @@ import * as path from 'path';
 import jsonServer from 'json-server';
 import { characterApi } from './api';
 
-const PORT = 3001;
+const PORT = 3000;
 (async () => {
   const app = express();
 
@@ -25,7 +25,7 @@ const PORT = 3001;
   );
 
   app.use('/api', middlewares, data);
-  app.use('/api/characters', characterApi);
+  app.use('/api/character', characterApi);
 
   app.listen(PORT, () => {
     console.log(`Express Server running http://localhost:${PORT}`);

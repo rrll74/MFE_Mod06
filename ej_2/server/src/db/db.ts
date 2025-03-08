@@ -1,5 +1,5 @@
 import { Character, CharacterEdit } from './models';
-import { createEmptyCharacter } from './mock-data/default-character.api.ts';
+import { createEmptyCharacter } from './mock-data/default-character.api';
 import Axios from 'axios';
 
 const url = `${process.env.LOCAL_API_URL}/character`;
