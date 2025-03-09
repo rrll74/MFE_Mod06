@@ -77,13 +77,13 @@ export const ShowEntityComponent: React.FunctionComponent<Props> = (props) => {
           <TableBody>
             {rows.map((row) => (
               <TableRow
-                key={row.name}
+                key={`fila_${row.name}`}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell>
+                <TableCell key={`celda_${row.name}`}>
                   {row.type === 'string' ? (
                     row.name === 'url' ? (
                       <>
