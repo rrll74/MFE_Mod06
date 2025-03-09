@@ -10,7 +10,7 @@ export const getLocationList = async (): Promise<LocationEntityApi[]> => {
 };
 
 export const getLocation = async (id: number): Promise<LocationEntityApi> => {
-  const response = await Axios.get('$(url)/${id}');
+  const response = await Axios.get(`${url}/${id}`);
   return response.data;
 };
 

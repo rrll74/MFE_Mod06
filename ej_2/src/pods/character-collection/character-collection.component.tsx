@@ -31,6 +31,9 @@ export const CharacterCollectionComponent: React.FunctionComponent<Props> = (
     onSearchChange,
   } = props;
 
+  // console.log('characterCollection', characterCollection);
+  // console.log('pageInfo', pageInfo);
+
   return (
     <div className={classes.root}>
       <Button variant="contained" color="primary" onClick={onCreateCharacter}>

@@ -11,5 +11,6 @@ export const getCharacter = async (id: number): Promise<CharacterEntityApi> => {
 export const saveCharacter = async (
   character: CharacterEntityApi
 ): Promise<boolean> => {
-  return true;
+  const response = await Axios.patch(`${url}/${character.id}`, character);
+  return response.data;
 };

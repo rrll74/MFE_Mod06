@@ -11,11 +11,10 @@ export const useCharacterCollection = () => {
   >([]);
   const [pageInfo, setPageInfo] = React.useState<FootPagination>();
 
-  const loadCharacterCollection = (page: number, searchTerm: string) => {
-    getCharacterCollection(page, searchTerm).then((result) => {
-      setCharacterCollection(mapToCollection(result.results, mapFromApiToVm));
-      setPageInfo(result.info);
-    });
+  const loadCharacterCollection = async (page: number, searchTerm: string) => {
+    const result = await getCharacterCollection(page, searchTerm);
+    setCharacterCollection(mapToCollection(result?.results, mapFromApiToVm));
+    setPageInfo(result?.info);
   };
 
   return {

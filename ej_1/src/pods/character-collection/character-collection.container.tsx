@@ -41,7 +41,7 @@ export const CharacterCollectionContainer = () => {
   };
 
   const handleSearch = (event) => {
-    console.log(event.target.value);
+    // console.log(event.target.value);
     setSearchTerm(event.target.value);
   };
 

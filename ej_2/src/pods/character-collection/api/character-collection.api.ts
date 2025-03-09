@@ -1,6 +1,6 @@
 import Axios from 'axios';
+import AxiosRetry from 'axios-retry';
 import { CharacterCollectionApi } from './character-collection.api-model';
-import { FootPagination } from 'pods/foot-pagination';
 
 const url = `${process.env.API_URL}/character`;
 
@@ -8,19 +8,22 @@ export const getCharacterCollection = async (
   page: number,
   searchTerm: string
 ): Promise<CharacterCollectionApi> => {
+  AxiosRetry(Axios, {
+    retries: 3, // Número de reintentos
+    retryDelay: (retryCount) => {
+      console.log(`Trying petition: # ${retryCount}`);
+      return retryCount * 1000;
+    },
+    // retryCondition: (error) => {
+    //   return error.code === 'ECONNRESET';
+    // },
+  });
+
   try {
-    const { data: all } = await Axios.get(`${url}`);
-    const info: FootPagination = {
-      count: all.length,
-      pages: Math.ceil(all.length / parseInt(process.env.PAGE_LIMIT)),
-      next: '',
-      prev: '',
-    };
     const { data: results } = await Axios.get(
-      `${url}/?_limit=${process.env.PAGE_LIMIT}&_page=${page}`
+      `${url}?_limit=${process.env.PAGE_LIMIT}&_page=${page}&name=${searchTerm}`
     );
-    console.log(results, info);
-    return { info: info, results: results };
+    return results;
   } catch (error) {
     console.error('Error getting character collection', error);
   }

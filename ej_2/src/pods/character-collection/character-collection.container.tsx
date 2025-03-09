@@ -13,9 +13,9 @@ export const CharacterCollectionContainer = () => {
   const [searchTerm, setSearchTerm] = React.useState('');
 
   React.useEffect(() => {
-    loadCharacterCollection(1, searchTerm);
+    loadCharacterCollection(page, searchTerm);
     return () => {
-      loadCharacterCollection(1, searchTerm);
+      loadCharacterCollection(page, searchTerm);
     };
   }, [searchTerm]);
 
@@ -41,7 +41,6 @@ export const CharacterCollectionContainer = () => {
   };
 
   const handleSearch = (event) => {
-    console.log(event.target.value);
     setSearchTerm(event.target.value);
   };
 

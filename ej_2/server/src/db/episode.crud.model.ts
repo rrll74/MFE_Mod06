@@ -10,7 +10,7 @@ export const getEpisodeList = async (): Promise<EpisodeEntityApi[]> => {
 };
 
 export const getEpisode = async (id: number): Promise<EpisodeEntityApi> => {
-  const response = await Axios.get('$(url)/${id}');
+  const response = await Axios.get(`${url}/${id}`);
   return response.data;
 };
 

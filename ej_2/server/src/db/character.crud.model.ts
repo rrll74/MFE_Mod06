@@ -10,7 +10,8 @@ export const getCharacterList = async (): Promise<CharacterEntityApi[]> => {
 };
 
 export const getCharacter = async (id: number): Promise<CharacterEntityApi> => {
-  const response = await Axios.get('$(url)/${id}');
+  const response = await Axios.get(`${url}/${id}`);
+  console.log('-----------getCharacter--------------');
   return response.data;
 };
 

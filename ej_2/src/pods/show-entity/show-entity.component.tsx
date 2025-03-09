@@ -55,12 +55,10 @@ export const ShowEntityComponent: React.FunctionComponent<Props> = (props) => {
   };
 
   const substituteURL = (url: string, empty: boolean = false) => {
-    console.log(url);
     const text = url.replace(
       process.env.OFICIAL_API_URL,
       empty ? '' : process.env.LOCAL_API_URL
     );
-    console.log(text);
     return text;
   };
 
