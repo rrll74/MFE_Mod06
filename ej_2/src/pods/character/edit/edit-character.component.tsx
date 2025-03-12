@@ -10,6 +10,7 @@ import { Lookup } from 'common/models';
 import { formValidation } from './edit-character.validations';
 import { Character } from './character.vm';
 import * as classes from './edit-character.styles';
+import { MySelectComponent } from 'common/components/form/select/myselect.component';
 
 interface Props {
   character: Character;
@@ -32,7 +33,25 @@ export const EditCharacterComponent: React.FunctionComponent<Props> = (
       {() => (
         <Form className={classes.root}>
           <TextFieldComponent name="name" label="Name" />
-          <TextFieldComponent name="status" label="Status" />
+          <MySelectComponent
+            title="Status"
+            items={[
+              {
+                name: 'Alive',
+                id: 'Alive',
+              },
+              {
+                name: 'Dead',
+                id: 'Dead',
+              },
+              {
+                name: 'Unknown',
+                id: 'unknown',
+              },
+            ]}
+            selected={character.status}
+            name="status"
+          />
           <TextFieldComponent name="species" label="Species" />
           <TextFieldComponent name="type" label="Type" />
           <TextFieldComponent name="gender" label="Gender" />
