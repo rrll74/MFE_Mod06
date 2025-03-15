@@ -4,8 +4,10 @@ import {
   LocationEntityApi,
 } from '../models';
 
+const url = 'http://localhost:3001';
+
 export const createEmptyCharacter = (): CharacterEntityApi => ({
-  id: 0,
+  id: null,
   name: '',
   status: '',
   species: '',
@@ -19,7 +21,7 @@ export const createEmptyCharacter = (): CharacterEntityApi => ({
     name: '',
     url: '',
   },
-  image: '',
+  image: `${url}/thumbnails/new-character.png`,
   episode: [],
   url: '',
   created: new Date().toUTCString(),

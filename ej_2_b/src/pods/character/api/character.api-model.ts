@@ -20,6 +20,10 @@ export interface CharacterEntityApi {
   bestSentences?: string;
 }
 
+export interface CharacterEntityApiResults {
+  character: CharacterEntityApi;
+}
+
 export const createEmptyEntityCharacter = (): CharacterEntityApi => ({
   id: 0,
   name: '',

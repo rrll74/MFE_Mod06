@@ -8,6 +8,10 @@ export interface LocationEntityApi {
   created: string;
 }
 
+export interface LocationEntityApiResults {
+  location: LocationEntityApi;
+}
+
 export const createEmptyEntityLocation = (): LocationEntityApi => ({
   id: 0,
   name: '',

@@ -5,7 +5,6 @@ import {
   deleteCharacter,
   getCharacter,
   getCharacterList,
-  CharacterEntityApi,
   CharacterEntityApiEdit,
 } from './../db';
 
@@ -21,25 +20,8 @@ characterApi
       (req.query?._page as unknown as string) || '1'
     );
 
-    const characters = await getCharacterList();
-    const filterName =
-      name === ''
-        ? characters
-        : characters.filter(
-            (value: CharacterEntityApi) =>
-              value.name.toLowerCase().indexOf(name.toLowerCase()) !== -1
-          );
-    const list = filterName.filter(
-      (value, index) => index >= (page - 1) * limit && index <= page * limit - 1
-    );
-    const info = {
-      count: filterName.length,
-      pages: Math.ceil(filterName.length / limit),
-      prev: '',
-      next: '',
-    };
-    const response = { info: info, results: list };
-    res.json(response);
+    const characters = await getCharacterList(name, page, limit);
+    res.json(characters);
   })
   .get('/:id', async (req, res) => {
     const id = parseInt(req.params.id);

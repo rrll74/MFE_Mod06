@@ -8,6 +8,10 @@ export interface EpisodeEntityApi {
   created: string;
 }
 
+export interface EpisodeEntityApiResults {
+  episode: EpisodeEntityApi;
+}
+
 export const createEmptyEntityEpisode = (): EpisodeEntityApi => ({
   id: 0,
   name: '',

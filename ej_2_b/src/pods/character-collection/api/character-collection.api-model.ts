@@ -32,6 +32,10 @@ export interface CharacterCollectionApi {
   results: CharacterEntityApi[];
 }
 
+export interface CharacterCollectionApiResults {
+  characters: CharacterCollectionApi;
+}
+
 export const createEmptyEntityCharacter = (): CharacterEntityApi => ({
   id: 0,
   name: '',
